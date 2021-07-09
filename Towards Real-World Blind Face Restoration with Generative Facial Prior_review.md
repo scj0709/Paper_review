@@ -12,3 +12,5 @@ Towards Real-World Blind Face Restoration with Generative Facial Prior
 Proposed Method
 --------------------
 ![image](https://user-images.githubusercontent.com/40060713/125026006-b4672a00-e0be-11eb-91bf-63e50573a0b5.png)
+
+우선 위의 그림이 전체적인 GFP-GAN의 framework이다. 전체적인 restoration 과정을 요약하면 우선 저하된 이미지 x를 degradation removal network에 넣고 이때 생기는 F_latent는 pretrained된 GAN prior (Style GAN의 방법) 에 인풋으로 들어간다. 각 scale별 F_spatial이 GAN prior의 featuremap 들과 Channel-Split SFT를 통해서 GAN prior의 texture와 저하도니 이미지의 정보가 조화를 이루게 된다. 마지막으로 결과 이미지에 Adversarial Loss, Facial Component Loss, Identity Preserving Loss를 걸어준다. F_spatial에는 Pyramid Restoration Loss를 걸어준다.
