@@ -26,3 +26,7 @@ Proposed Method
   
   - **Model Objectives**   
     이 논문에는 여러 loss들이 사용되었다. 우선 reconstrrction loss로 L1 loss와 perceptual loss로 vgg loss가 사용되었다. 결과이미지의 real함을 위해서 adversarial loss도 사용되 었고, 눈과 입에 Facial component loss가 사용되었다. 이때 discirinator loss 뿐만 아니라 GRAM matrix를 통해 style loss를 걸어준다. 마지막으로 결과 이미지가 저하된 이미지와의 일치를 주기 위해서 ArcFace model 을 통한 loss를 걸어준다. 
+
+Experiments
+-------------
+![image](https://user-images.githubusercontent.com/40060713/125029952-5ee24b80-e0c5-11eb-8477-5868a9bd2e06.png)
