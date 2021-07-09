@@ -8,4 +8,7 @@ Towards Real-World Blind Face Restoration with Generative Facial Prior
   2. GFP-GAN framework를 제안하는데, architecture와 losses를 잘 설계했고, CS-SFT Layer를 통해 textures와 저하된 이미지의 신뢰도의 balance를 잘 잡아준다.
   3. 여러 실험을 통해 우수한 성능을 증명한다.
 
+
+Proposed Method
+--------------------
 ![image](https://user-images.githubusercontent.com/40060713/125026006-b4672a00-e0be-11eb-91bf-63e50573a0b5.png)
