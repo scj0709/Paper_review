@@ -57,3 +57,7 @@ Ablation Study
 ![image](https://user-images.githubusercontent.com/40060713/125032584-25abda80-e0c9-11eb-980a-06e39324856b.png)
 
 + 위의 그림은 limatations이다. 너무 심하게 저하된 이미지에 대해서 제대로 복원하지 못하는 듯 하다. 그리고 학습할때의 synthetic한 데이터와 위의 real한 데이터의 distribution의 차이이기도 한듯하다.
+
+Discussion
+-------------
++ generative prior를 이용해 restoration한 논문 중 가장 좋은 아이디어인 것 같다. GAN inversion을 네트워크안에 녹인 느낌이다. 또한 기존의 GAN inversion방법들은 identity가 다른 점을 generative prior의 수용 능력이라고 하는데 이논문은 그 부분을 해결하기위한 방법도 제시했다. fine tunning하는 느낌이라 표현해도 되는지는 모르겠지만 그런 느낌이다. 그리고 최신 논문의 기법들을 거의 모두 흡수한 논문인 느낌..역시 논문을 많이 읽어야한다. 이논문에 사용되었지만 안읽어서 모르는 논문들을 추가적으로 추적해서 읽어야겠다.
