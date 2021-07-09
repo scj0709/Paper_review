@@ -31,6 +31,29 @@ Experiments
 -------------
 ![image](https://user-images.githubusercontent.com/40060713/125029952-5ee24b80-e0c5-11eb-8477-5868a9bd2e06.png)
 + 위의 그림을 보면다른 방법들에 비해 훨씬 선명하다. 그뿐만이 아니라 PULSE와 비교해보면 GT와의 fidelity가 훨씬 좋음을 확인할 수 있다. PULSE 논문을 읽을 때 복원이미지의 저하된 이미지와의 identity의 차이는 잘 못 된게 아니라는 PULSE의 주장에 홀딱 넘어갔었는데 이논문은 이러한 점을 지적하며 해결한 셈이다.
-+ ![image](https://user-images.githubusercontent.com/40060713/125030289-db752a00-e0c5-11eb-8510-d722d4945f06.png)
+
+![image](https://user-images.githubusercontent.com/40060713/125030289-db752a00-e0c5-11eb-8510-d722d4945f06.png)
 
 + Quantitative한 결과에서 여러 perceputual한 비교는 다른 방법들에 비해 좋았다. 하지만 PSNR과 SSIM수치는 가장 좋은 결과는 아니었다. 아무래도 generative prior를 사용했기 때문에 역시 저하된 이미지 자체의 restoration결과가 아닌 느낌(?)인 것인가? 가장 좋은 DeblurGanv2의 결과를 보면 약간 블러하지만 GT와 가장 가까운 identity를 가지고 있는 느낌이다. 그래도 GFP-GAN의 결과가 좀더 리얼하고 input의 identity도 잘 담고있는 느낌이다. 
+
+![image](https://user-images.githubusercontent.com/40060713/125030864-bb923600-e0c6-11eb-9e11-d42d659fe6ac.png)
+![image](https://user-images.githubusercontent.com/40060713/125031135-280d3500-e0c7-11eb-9915-36224a880ae0.png)
+
++ 여러 real-world 데이터셋에 대한 결과이다. color에 대한 복원 능력도 뛰어남을 볼 수 있다. 결과가 무척 좋은듯하다. 정성적인 결과는 PULSE가 높게 나타나지만 visual 비교를 통해 PULSE의 경우 identity가 맞지않음을 지적하고 있다.
+ 
+Ablation Study
+--------------
+![image](https://user-images.githubusercontent.com/40060713/125031959-3ad43980-e0c8-11eb-9aa2-1de689e6ab17.png)
+
++ GFP-GAN의 여러방법들을 뺐을때와 GFP-GAN의 결과를 비교했다. a), b), c), d)는 각각 saptial modulation, CS-SFT, GAN prior, pyramid restoration loss에 대한 성능을 보여준다.
+
+![image](https://user-images.githubusercontent.com/40060713/125032158-838bf280-e0c8-11eb-87a0-2ba69fc32c8a.png)
++ 위의 그림은 CS-SFT, GFP prior, pyramid restoration loss의 결과이다. SFT가 아예없을 경우 identity가 완전히 벗어난 결과가 나타났고, SFT만을 사용하면 이빨 부분의 detail들이 제대로 안살아있는 저하된 결과를 볼 수 있다. pretrained GAN을 사용하지 않을경우도 이미지의 detail이 많이 살아있지 않음을 확인할 수 있다. pyramid loss를 사용하지 않은 부분도 크게 저하됨을 볼 수 있다. 
+
+![image](https://user-images.githubusercontent.com/40060713/125032432-eaa9a700-e0c8-11eb-8b29-1be44fafe7ed.png)
+
++ 위의 결과는 disciriminator, feature matching, feature style loss에 대한 눈 component의 detail 비교이다. discriminator를 사용한 것이 당연히 좋고 discriminator loss와 feature style loss를 사용한 것이 feature matching loss보다 더 real한 눈을 표현한듯 하다.
+
+![image](https://user-images.githubusercontent.com/40060713/125032584-25abda80-e0c9-11eb-980a-06e39324856b.png)
+
++ 위의 그림은 limatations이다. 너무 심하게 저하된 이미지에 대해서 제대로 복원하지 못하는 듯 하다. 그리고 학습할때의 synthetic한 데이터와 위의 real한 데이터의 distribution의 차이이기도 한듯하다.
