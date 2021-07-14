@@ -20,10 +20,10 @@ Proposed Method
     
   - **Generative Latent Bank**    
 ![image](https://user-images.githubusercontent.com/40060713/125564414-8802efda-ee17-4118-9b00-477da219a5d4.png)    
-    pre-trained GAN으로 style GAN이 사용되었다. 이전 encoder에서의 features와 latent vector C가 입력으로 사용된다. Style GAN은 이미지 generation tasks에 사용되므로 직접적으로 이 framework에 사용될 수 없어서 세가지 수정사항을 통해 적용했다.
-    1.Style GAN에 서는 하나의 벡터가 latent vector로 사용되고 각 block에 같은 벡터들이 들어간다 하지만 본 논문에서는 각 블록 별로 다른 latent vectors가 들어간다. 즉 위의 C는 여러개의 벡터가 된다. 
-    2.encoder로 부터 생성된 feature들을 style block에 추가해준다. 정확한 부분은 코드가 나와 봐야 알겠지만 style block으로 feature fusion을 한다는 것은 style GAN에서의 noise 추가부분을 encoder의 features를 넣어주는 것 같다. 
-    3.이러한 generator로 바로 이미지를 생성하는 것이 아니라 decoder를 통해 latent bank와 encoder의 feature를 보다 잘 fuse 시켜준다.
+    pre-trained GAN으로 style GAN이 사용되었다. S_i는 style block을 나타낸다. 이전 encoder에서의 features와 latent vector C가 입력으로 사용된다. Style GAN은 이미지 generation tasks에 사용되므로 직접적으로 이 framework에 사용될 수 없어서 세가지 수정사항을 통해 적용했다.
+    1.Style GAN에 서는 하나의 벡터가 latent vector로 사용되고 각 block에 같은 벡터들이 들어간다 하지만 본 논문에서는 각 블록 별로 다른 latent vectors가 들어간다. 즉 위의 C는 여러개의 벡터가 된다.     
+    2.encoder로 부터 생성된 feature들을 style block에 추가해준다. 정확한 부분은 코드가 나와 봐야 알겠지만 style block으로 feature fusion을 한다는 것은 style GAN에서의 noise 추가부분을 encoder의 features를 넣어주는 것 같다.      
+    3.이러한 generator로 바로 이미지를 생성하는 것이 아니라 decoder를 통해 latent bank와 encoder의 feature를 보다 잘 fuse 시켜준다.     
 
   - **Decoder**    
 ![image](https://user-images.githubusercontent.com/40060713/125564463-07d9c77e-2baf-4d2b-9d80-af55b27e9d1c.png)    
