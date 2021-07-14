@@ -20,7 +20,7 @@ Proposed Method
     
   - **Generative Latent Bank**    
 ![image](https://user-images.githubusercontent.com/40060713/125564414-8802efda-ee17-4118-9b00-477da219a5d4.png)    
-    pre-trained GAN으로 style GAN이 사용되었다. S_i는 style block을 나타낸다. 이전 encoder에서의 features와 latent vector C가 입력으로 사용된다. Style GAN은 이미지 generation tasks에 사용되므로 직접적으로 이 framework에 사용될 수 없어서 세가지 수정사항을 통해 적용했다.
+    pre-trained GAN으로 style GAN이 사용되었다. S_i는 style block을 나타낸다. 이전 encoder에서의 features와 latent vector C가 입력으로 사용된다. Style GAN은 이미지 generation tasks에 사용되므로 직접적으로 이 framework에 사용될 수 없어서 세가지 수정사항을 통해 적용했다.    
     1.Style GAN에 서는 하나의 벡터가 latent vector로 사용되고 각 block에 같은 벡터들이 들어간다 하지만 본 논문에서는 각 블록 별로 다른 latent vectors가 들어간다. 즉 위의 C는 여러개의 벡터가 된다.     
     2.encoder로 부터 생성된 feature들을 style block에 추가해준다. 정확한 부분은 코드가 나와 봐야 알겠지만 style block으로 feature fusion을 한다는 것은 style GAN에서의 noise 추가부분을 encoder의 features를 넣어주는 것 같다.      
     3.이러한 generator로 바로 이미지를 생성하는 것이 아니라 decoder를 통해 latent bank와 encoder의 feature를 보다 잘 fuse 시켜준다.     
@@ -35,3 +35,9 @@ Proposed Method
    
 Experiments
 ------------- 
+![image](https://user-images.githubusercontent.com/40060713/125564692-4da464ce-ad57-4b92-a10e-e8b45048bd2f.png)
+16x SR에 대한 Qualitative 결과이다. PULSE와 mGANprior의 결과는 identity를 제대로 복원하는데 실패하였다. DGP의 경우도 눈과 입부분을 보면 GT와의 identity가 미세하게 다름을 확인하였다. SinGAN의 경우 자연스럽지 못한 결과이고 ESRGAN은 좋은 결과 지만 확대해 보면 약간의 아티펙트들이 관찰된다. 하지만 GLEAN의 경우 identity 성과 품질측면에서도 매우 우수한 성능을 확인할 수 있다.  
+![image](https://user-images.githubusercontent.com/40060713/125567230-363aa552-c282-446f-a836-d6a762a04a01.png)    
+무려 64x SR의 결과이다. GAN prior를 사용함으로써 매우 real한 이미지를 얻음을 확인할 수 있다. 아무래도 64배의 입력이 너무 저하되다 보니 identity를 보장하기는 힘들어 보인다.
+
+
