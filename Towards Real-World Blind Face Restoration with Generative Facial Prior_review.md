@@ -15,7 +15,7 @@ Proposed Method
 
   + 우선 위의 그림이 전체적인 GFP-GAN의 framework이다. Degradation Removal module과 pretrained face GAN으로 이루어져 있다. 두개의 모듈은 latent code mapping과 Channel-Split Spatial Feature Transform  (CS-SFT) layers를 통해 연결된다. Degradation removal module은 저하된 입력의 저하를 풀어주고, clean한 F_latent를 W space로 mapping한다. W space는 style gan 논문을 읽어보자. 그리고 multi-resolution spatial features F_spatial을 생성한다. 이렇게 저하된 이미지의 coarsely 찾아진 깨끗한 F_latent를 GAN prior F_prior로 얻는다. 이렇게 얻어진 F_spatial과 F_prior를 CS-SFT를 통해 real하고 신뢰있는 결과를 얻을 수 있다. 결과 이미지에 adversarial loss, facial component loss, identity preserving loss를 걸어주고, F_spatial에 pyramid restoration loss를 걸어준다.
 
-  - **Degradation Removal Moudule**
+  - **Degradation Removal Moudule**    
     Pyramid networks를 통해서 다중 해상도의 로스를 통해 깨끗한 영상을 얻을 수 있다고한다. 여기서 refer한 "Deep Laplacial Pyramid Networks for Fast and Accurate Super-Resolution"논문은 안읽어 봐서 읽어봐야 겠다. 하튼 U-net구조를 이용하고 encoder는 W space로 mapping decoder는 clean한 feature를 뽑는데 이때 위의 pyramid network에서 사용한 방법이 사용된다.
  
   - **Generative Facial Prior and Latent Code Mapping**   
